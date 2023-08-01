@@ -1,0 +1,39 @@
+================
+=== dotfiles ===
+================
+
+This repository holds my personal configs
+
+Configurations
+--------------
+This repository currently holds configs for:
+
+* alacritty
+* bspwm 
+* conky
+* fish 
+* neofetch
+* neovim
+* polybar
+* rofi 
+* st*
+* starship
+* sxhkk
+* tmux
+
+NOTE: names with an asterisk (*) behind their names are locatedin their own repository and integrated via git submodules
+
+Dependencies
+------------
+* Fira Code (https://github.com/tonsky/firacode)
+* gcc
+* make
+
+Installation
+------------
+Execute deploy.sh in the root folder of this repository
+
+
+License
+-------
+This repository is licensed under MIT License

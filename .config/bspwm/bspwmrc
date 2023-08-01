@@ -1,0 +1,51 @@
+#! /bin/sh
+
+pgrep -x sxhkd > /dev/null || sxhkd &
+
+bspc monitor DP-0  -d 1 2 3  
+bspc monitor DP-2  -d 4 5 6 
+bspc monitor HDMI-0 -d 7 8 9
+
+bspc config border_width         2
+bspc config window_gap          12
+
+bspc config split_ratio          0.52
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+bspc config pointer_follows_focus true
+bspc config focus_follows_pointer true
+
+# Border
+bspc config focused_border_color        "#6ic71c4"
+bspc config normal_border_color         "#073642"
+bspc config active_border_color         "#073642"
+
+#
+# Autostart
+#
+# picom
+picom -b &
+# Set display from arandr saved script
+sh ~/.screenlayout/standard.sh &
+# Bar
+~/.config/polybar/launch.sh &
+# Notifications
+/usr/bin/dunst &
+# Polkit
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+# Wallpaper
+nitrogen --restore &
+# Dex
+dex -a -s /etc/xdg/autostart/:~/.config/autostart/  
+# Picom
+# picom -b &
+# Network Applet
+nm-applet --indicator &
+# Conky
+conky &
+
+# Cursor
+xsetroot -cursor_name left_ptr &
+
+#pushup script
+python3 /home/max/Documents/pushupman/__main__.py > /dev/null &
