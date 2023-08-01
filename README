@@ -29,11 +29,6 @@ Dependencies
 * gcc
 * make
 
-Installation
-------------
-Execute deploy.sh in the root folder of this repository
-
-
 License
 -------
 This repository is licensed under MIT License
