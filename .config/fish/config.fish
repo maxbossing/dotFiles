@@ -9,7 +9,7 @@
 if status is-interactive
 and not set -q TMUX
     exec tmux
-    tmux source $HOME/tmux.conf
+    tmux source ~tmux.conf
 end
 
 clear  # Just clear
