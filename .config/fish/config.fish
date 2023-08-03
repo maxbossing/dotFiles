@@ -8,8 +8,7 @@
 
 if status is-interactive
 and not set -q TMUX
-    exec tmux
-    tmux source ~tmux.conf
+    exec tmux -f ~/tmux.conf new-session -A -s terminal
 end
 
 clear  # Just clear
