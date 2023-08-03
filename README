@@ -12,6 +12,7 @@ This repository currently holds configs for:
 * bspwm     (window manager)
 * conky     (system monitor)
 * fish      (shell)
+* git       (source code management tool)
 * mutt      (email client)
 * neofetch  (system information)
 * neovim    (editor)
