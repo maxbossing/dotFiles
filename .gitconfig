@@ -1,0 +1,19 @@
+[user]
+	email = info@maxbossing.de
+	name = Max Bossing
+[init]
+    defaultBranch = master
+[commit]
+    gpgsign = true
+[color]
+    ui = auto
+[core]
+    editor = nvim
+[diff]
+    mnemonicPrefix = true
+    renames = true
+[grep]
+    break = true
+    heading = true
+    lineNumber = true
+    extendedRegexp = true
