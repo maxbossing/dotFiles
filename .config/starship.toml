@@ -34,7 +34,7 @@ style = "bold italic blue"
 min_time = 4
 show_milliseconds = false
 disabled = false
-style = "bold italic red"
+style = "bold yellow"
 
 [aws]
 symbol = "  "
@@ -44,9 +44,6 @@ symbol = " "
 
 [dart]
 symbol = " "
-
-#[directory]
-#read_only = " "
 
 [docker_context]
 symbol = " "
