@@ -8,20 +8,21 @@ Configurations
 --------------
 This repository currently holds configs for:
 
-* alacritty
-* bspwm 
-* conky
-* fish 
-* neofetch
-* neovim
-* polybar
-* rofi 
-* st*
-* starship
-* sxhkk
-* tmux
+* alacritty (terminal)
+* bspwm     (window manager)
+* conky     (system monitor)
+* fish      (shell)
+* mutt      (email client)
+* neofetch  (system information)
+* neovim    (editor)
+* polybar   (system bar for bspwm)
+* rofi      (application launcher)
+* st*       (terminal emulator)
+* starship  (shell prompt)
+* sxhkd     (keybind daemon)     
+* tmux      (terminal multiplexer)
 
-NOTE: names with an asterisk (*) behind their names are locatedin their own repository and integrated via git submodules
+NOTE: entries with an asterisk (*) behind their names are located in their own repository and integrated via git submodules
 
 Dependencies
 ------------
