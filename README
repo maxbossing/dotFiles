@@ -1,11 +1,12 @@
-================
-=== dotfiles ===
-================
+===============================
+===        DOTFILES         ===
+===============================
 
-This repository holds my personal configs
+This repository holds my personal configgurations
 
-Configurations
---------------
+
+CONTENTS
+--------
 This repository currently holds configs for:
 
 * alacritty          (terminal emulator)
@@ -26,11 +27,12 @@ This repository currently holds configs for:
 
 NOTE: entries with an asterisk (*) behind their names are located in their own repository and integrated via git submodules
 
-Dependencies
+
+DEPENDENCIES
 ------------
 * Fira Code (https://github.com/tonsky/firacode)
-* gcc
-* make
+* GCC
+* GNU make
 
 License
 -------
