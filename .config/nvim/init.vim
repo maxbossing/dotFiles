@@ -6,8 +6,65 @@
 " \__,_|\___/ \__|_|    |_|_|\___||___/ GitHub: github.com/maxbossing
 "
 
-source ~/.config/nvim/scripts/plugins.vim           " Plugins
-source ~/.config/nvim/scripts/keymap.vim            " Keymapping
-source ~/.config/nvim/scripts/settings.vim          " settings
-source ~/.config/nvim/scripts/plugins/NERDTree.vim  " NERDTree config
-source ~/.config/nvim/scripts/plugins/lightline.vim " lightline config
+"=== KEYMAP ===
+" Map Leader to space
+let mapleader = " "
+
+
+"=== MOUSE ===
+set mouse=nicr
+set mouse=a
+
+
+"=== PLUGINS ===
+" Installation
+call plug#begin()
+Plug 'itchyny/lightline.vim'
+Plug 'luochen1990/rainbow'                    " Raibow parenthesis
+Plug 'airblade/vim-gitgutter'                 " Git integration
+Plug 'dag/vim-fish'                           " Fish highlighting
+Plug 'https://gitlab.com/gi1242/vim-emoji-ab' " Emojis
+Plug 'sheerun/vim-polyglot'                   " Language Packs
+Plug 'morhetz/gruvbox'                        " Theme
+call plug#end()
+
+" Activate rainbow parenthesis
+let g:rainbow_active = 1
+
+
+"=== SETTINGS ===
+" Line numbering
+set ruler
+set number
+
+" No swap/backup
+set noswapfile
+set nobackup
+
+" Use Spaces instead of Tabs
+set expandtab
+
+" Smart Tabs
+set smarttab
+
+" One tab == four spaces
+set shiftwidth=4
+set tabstop=4
+
+" Emoji completion
+set completefunc=emoji#complete
+
+
+"=== COLORSCHEME ===
+set termguicolors
+let g:gruvbox_contrast_dark='medium'
+let g:gruvbox_contrast_light='hard'
+hi LspCxxHlGroupMemberVariable guifg=#83a598
+colorscheme gruvbox
+
+"=== LIGHTLINE CONFIG ===
+" Always show statusline
+set laststatus=2
+
+" prevents non-normal modes from showing below lightline
+set noshowmode
