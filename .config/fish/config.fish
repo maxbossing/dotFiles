@@ -16,7 +16,6 @@ set EDITOR 'nvim'
 set VISUAL 'nvim'
 
 
-
 # === GPG ===
 # This is used so the pgp keys on my Yubikey can be used for ssh etc
 
@@ -42,7 +41,6 @@ alias switchto1='gpg-connect-agent "20576321" "learn --force" /bye'
 alias switchto2='gpg-connect-agent "20576243" "learn --force" /bye'
 
 
-
 # === ALIAS ===
 # Aliases
 
@@ -55,7 +53,8 @@ alias ls='exa -al --group-directories-first --icons --color=always'
 # My dotfiles are managed through a git bare repo in my $HOME
 alias config='/usr/bin/git --git-dir=$HOME/.cfg --work-tree=$HOME'
 
-
+# Map cd to z (zoxide [a better cd command])
+alias cd='z'
 
 #=== COLORS ===
 # Fish colors
@@ -76,7 +75,6 @@ set fish_color_error '#D11313'
 set fish_color_param brpurple
 
 
-
 #=== TMUX ===
 # Attach to tmux session
 if status is-interactive
@@ -89,5 +87,10 @@ end
 # clear outputs
 clear 
 
-# int startship
+#=== INITIALISATION ===
+
+# Init startship
 starship init fish | source  
+
+# Init zoxide
+zoxide init fish | source
