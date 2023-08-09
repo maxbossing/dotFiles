@@ -116,6 +116,8 @@ base_color=
 tmux-256color=
 color_terminals=
 
+screen-256color=
+
 [Panels]
 show_mini_info=true
 kilobyte_si=false
