@@ -53,8 +53,6 @@ alias ls='exa -al --group-directories-first --icons --color=always'
 # My dotfiles are managed through a git bare repo in my $HOME
 alias config='/usr/bin/git --git-dir=$HOME/.cfg --work-tree=$HOME'
 
-# Map cd to z (zoxide [a better cd command])
-alias cd='z'
 
 #=== COLORS ===
 # Fish colors
@@ -93,4 +91,4 @@ clear
 starship init fish | source  
 
 # Init zoxide
-zoxide init fish | source
+zoxide init --cmd cd fish | source
