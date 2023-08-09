@@ -22,7 +22,7 @@ set record = "=Sent"
 set postponed = "=Drafts"
 
 
-#=== GENERL ===
+#=== GENERAL ===
 # Cache Headers/Messages locally
 set header_cache = ~/.cache/mutt
 set message_cachedir = "~/.cache/mutt"

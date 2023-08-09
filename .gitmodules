@@ -1,3 +1,6 @@
 [submodule "st"]
 	path = st
 	url = git@codeberg.org:maxbossing/st.git
+[submodule ".config/mutt/mutt-gruvbox"]
+	path = .config/mutt/mutt-gruvbox
+	url = https://git.sthu.org/repos/mutt-gruvbox.git
