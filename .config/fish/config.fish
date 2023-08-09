@@ -48,7 +48,7 @@ alias switchto2='gpg-connect-agent "20576243" "learn --force" /bye'
 alias vim='nvim'
 
 # exa > ls
-alias ls='exa -al --group-directories-first --icons --color=always'
+alias ls='exa -al --group-directories-first --icons --color=always --grid --git'
 
 # My dotfiles are managed through a git bare repo in my $HOME
 alias config='/usr/bin/git --git-dir=$HOME/.cfg --work-tree=$HOME'
