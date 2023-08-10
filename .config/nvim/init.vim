@@ -26,6 +26,8 @@ Plug 'dag/vim-fish'                           " Fish highlighting
 Plug 'https://gitlab.com/gi1242/vim-emoji-ab' " Emojis
 Plug 'sheerun/vim-polyglot'                   " Language Packs
 Plug 'morhetz/gruvbox'                        " Theme
+Plug 'vimwiki/vimwiki'                        " Vimwiki
+Plug 'tpope/vim-surround'                     " surrounding
 call plug#end()
 
 " Activate rainbow parenthesis
@@ -54,6 +56,10 @@ set tabstop=4
 " Emoji completion
 set completefunc=emoji#complete
 
+" Needed for vimwiki
+set nocompatible
+filetype plugin on
+syntax on
 
 "=== COLORSCHEME ===
 set termguicolors
@@ -68,3 +74,13 @@ set laststatus=2
 
 " prevents non-normal modes from showing below lightline
 set noshowmode
+
+
+"=== VIMWIKI CONFIG ===
+" Headers should be bold and colorful
+hi VimwikiHeader1 gui=bold guifg=#A6BE26
+hi VimwikiHeader2 gui=bold guifg=#f49ac2
+hi VimwikiHeader3 gui=bold guifg=#f21840
+hi VimwikiHeader4 gui=bold guifg=#F97a40
+hi VimwikiHeader5 gui=bold guifg=#088da5
+hi VimwikiHeader6 gui=bold guifg=#ee5555
