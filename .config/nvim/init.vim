@@ -28,6 +28,7 @@ Plug 'sheerun/vim-polyglot'                   " Language Packs
 Plug 'morhetz/gruvbox'                        " Theme
 Plug 'vimwiki/vimwiki'                        " Vimwiki
 Plug 'tpope/vim-surround'                     " surrounding
+Plug 'udalov/kotlin-vim'                      " Kotlin highlighting
 call plug#end()
 
 " Activate rainbow parenthesis
@@ -84,3 +85,23 @@ hi VimwikiHeader3 gui=bold guifg=#f21840
 hi VimwikiHeader4 gui=bold guifg=#F97a40
 hi VimwikiHeader5 gui=bold guifg=#088da5
 hi VimwikiHeader6 gui=bold guifg=#ee5555
+
+" find incomplete tasks in the wiki
+function! VimwikiFindIncompleteTasks()
+  lvimgrep /- \[ \]/ %:p
+  lopen
+endfunction
+
+function! VimwikiFindAllIncompleteTasks()
+  VimwikiSearch /- \[ \]/
+  lopen
+endfunction
+
+nmap <Leader>wa :call VimwikiFindAllIncompleteTasks()<CR>
+nmap <Leader>wx :call VimwikiFindIncompleteTasks()<CR>
+
+" set todo list icons
+let g:vimwiki_listsyms = '✗○◐●✓'
+
+" map Leader+t to toggle list item
+nmap <Leader>t :VimwikiToggleListItem<CR>
