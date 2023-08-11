@@ -1,6 +1,6 @@
 [submodule "st"]
 	path = st
 	url = git@codeberg.org:maxbossing/st.git
-[submodule "wallpapers"]
-	path = wallpapers
-	url = git@codeberg.org:maxbossing/wallpapers.git
+[submodule ".local/share/backgrounds"]
+	path = .local/share/backgrounds
+	url = git@codeberg.org:maxbossing/backgrounds.git
