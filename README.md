@@ -1,14 +1,9 @@
-===============================
-===        DOTFILES         ===
-===============================
+# Dotfiles
 
 This repository holds my personal configgurations
 
-
-CONTENTS
---------
+## Contents
 This repository currently holds configs for:
-
 * alacritty          (terminal emulator)
 * bspwm              (window manager)
 * conky              (system monitor)
@@ -25,15 +20,13 @@ This repository currently holds configs for:
 * sxhkd              (keybind daemon)     
 * tmux               (terminal multiplexer)
 
-NOTE: entries with an asterisk (*) behind their names are located in their own repository and integrated via git submodules
+> NOTE: entries with an asterisk (*) behind their names are located in their own repository and integrated via git submodules
 
 
-DEPENDENCIES
-------------
+## DEPENDENCIES
 * Fira Code (https://github.com/tonsky/firacode)
 * GCC
 * GNU make
 
-License
--------
+## License
 This repository is licensed under MIT License
