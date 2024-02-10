@@ -13,8 +13,8 @@ vim.cmd([[colorscheme gruvbox]])
 vim.g.mapleader = ' '
 
 -- Tabs sind für lutscher
-vim.opt["tabstop"] = 4
-vim.opt["shiftwidth"] = 4
+vim.opt["tabstop"] = 2
+vim.opt["shiftwidth"] = 2
 vim.o.expandtab = true
 
 -- Numbers on the side
@@ -40,6 +40,8 @@ require('lualine').setup {
 -- LSP setup
 require("lsp")
 
+require('lsp_signature').setup()
+
 -- File explorer setup
 require("nvim-tree").setup()
 vim.keymap.set('n', '<leader>ff', ':NvimTreeFocus<CR>')
@@ -57,19 +59,37 @@ vim.cmd[[hi VimwikiHeader6 gui=bold guifg=#ee5555]]
 -- Treesitter setup
 require('nvim-treesitter.configs').setup {
   highlight = {
-    enable = true,
+    enable = true
   },
 }
 
 -- Navigator setup
 require('navigator').setup()
 
-require('lsp_signature').setup()
+-- Trouble setup
+vim.keymap.set('n', '<leader>e', ':TroubleToggle<CR>')
+
+-- Nvim-notify setup
+vim.notify = require('notify')
 
 -- Telescope setup
-local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>tf', builtin.find_files, {}) -- file search
-vim.keymap.set('n', '<leader>tg', builtin.live_grep, {})  -- ripgrep search
-vim.keymap.set('n', '<leader>tb', builtin.buffers, {})    -- buffer peak
-vim.keymap.set('n', '<leader>th', builtin.help_tags, {})  -- help menu
-vim.keymap.set('n', '<leader>tt', builtin.treesitter, {}) -- treesitter symbol menu
+require('telescope').load_extension('fzf')
+vim.keymap.set('n', '<leader>tf', ':Telescope find_files<CR>')  -- file search
+vim.keymap.set('n', '<leader>tg', ':Telescope live_grep<CR>')   -- ripgrep search 
+vim.keymap.set('n', '<leader>tb', ':Telescope buffers<CR>')     -- buffer peak
+vim.keymap.set('n', '<leader>th', ':Telescope help_tags<CR>')   -- help menu
+vim.keymap.set('n', '<leader>tt', ':Telescope treesitter <CR>') -- treesitter symbol menu 
+vim.keymap.set('n', '<leader>tn', ':Telescope notify<CR>')      -- notificationa
+vim.keymap.set('n', '<leader>tp', ':Telescope builtin<CR>')     -- picker picker lmao
+
+-- File System editor setup
+require('oil').setup()
+
+-- c2h setup
+vim.keymap.set('n', '<leader>ch', ':C2H<CR>')
+
+-- which-key setup
+require("which-key")
+
+-- Custom scripts
+require('notifications')
