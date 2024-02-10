@@ -18,16 +18,16 @@ require("lazy").setup({
       dependencies = { 
 	    'nvim-lua/plenary.nvim',
 	    'BurntSushi/ripgrep',
- 	    'sharkdp/fd'
+	    'sharkdp/fd',
+	    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }
       }
     },
 
     -- Status line
     {
 	  'nvim-lualine/lualine.nvim',
-	   dependencies = {
-         'nvim-tree/nvim-web-devicons'
-	   }
+	   dependencies = 
+         { 'nvim-tree/nvim-web-devicons' }
     },
 
     -- LSP
@@ -45,9 +45,8 @@ require("lazy").setup({
     -- File explorer
     {
       'nvim-tree/nvim-tree.lua',
-      dependencies = {
-        'nvim-tree/nvim-web-devicons'
-      }
+      dependencies = 
+        { 'nvim-tree/nvim-web-devicons' }
     },
     
     -- Code Navigator
@@ -58,6 +57,34 @@ require("lazy").setup({
       }
     },
     
+    -- Error/warning window
+    {
+      'folke/trouble.nvim',
+      dependencies = { 'nvim-tree/nvim-web-devicons' },
+      opts = {
+        use_diagnostic_signs = true
+      }
+    },
+
+    -- Edit the filesystem like a buffer
+    {
+      'stevearc/oil.nvim',
+      dependencies = 
+        { "nvim-tree/nvim-web-devicons" },
+    },
+
+    {
+     "folke/which-key.nvim",
+      event = "VeryLazy",
+      init = function()
+          vim.o.timeout = true
+          vim.o.timeoutlen = 300
+        end,
+    },
+
+    -- Notifications
+    'rcarriga/nvim-notify',
+
     -- Show function signature
     'ray-x/lsp_signature.nvim',
 
@@ -73,8 +100,7 @@ require("lazy").setup({
     
     -- Git
     'tpope/vim-fugitive',
-    
+
+        -- Switch between .h and .c
+    'linluk/vim-c2h'
 })
-
-
-
