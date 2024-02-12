@@ -1,13 +1,3 @@
-#██████╗  ██████╗ ████████╗███████╗██╗██╗     ███████╗███████╗
-#██╔══██╗██╔═══██╗╚══██╔══╝██╔════╝██║██║     ██╔════╝██╔════╝
-#██║  ██║██║   ██║   ██║   █████╗  ██║██║     █████╗  ███████╗
-#██║  ██║██║   ██║   ██║   ██╔══╝  ██║██║     ██╔══╝  ╚════██║ Author: Max
-#██████╔╝╚██████╔╝   ██║   ██║     ██║███████╗███████╗███████║ Github: github.com/maxbossing/dotfiles
-#╚═════╝  ╚═════╝    ╚═╝   ╚═╝     ╚═╝╚══════╝╚══════╝╚══════╝ Config: Fish - Main Config
-
-# === EXPORTS ===
-# Variable exports
-
 # Remove fish greeting
 set fish_greeting
 
@@ -15,23 +5,11 @@ set fish_greeting
 set EDITOR 'nvim'
 set VISUAL 'nvim'
 
-
-# === GPG ===
 # This is used so the pgp keys on my Yubikey can be used for ssh etc
-
-# Start ssh-agent
 eval (ssh-agent -c)
-
-# Start gpg agent
 gpg-agent --enable-ssh-support
-
-# Set ssh auth sock to gpg agent
 set SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
-
-# I don't know what this does but we need it
 set GPG_TTY (tty)
-
-# connect agents
 gpg-connect-agent updatestartuptty /bye >/dev/null
 
 # Switch gpg to backup keys
@@ -40,55 +18,20 @@ alias switchto1='gpg-connect-agent "20576321" "learn --force" /bye'
 # Backup Key
 alias switchto2='gpg-connect-agent "20576243" "learn --force" /bye'
 
-
-# === ALIAS ===
-# Aliases
-
-# Map vim to nvim
-alias vim='nvim'
-
 # exa > ls
-alias ls='exa -al --group-directories-first --icons --color=always --grid --git'
+alias ls='exa -al --group-directories-first --icons --color=always --git'
 
-# My dotfiles are managed through a git bare repo in my $HOME
-alias config='/usr/bin/git --git-dir=$HOME/.cfg --work-tree=$HOME'
+# attach to tmux session
+alias attach='tmux -f ~/tmux.conf/ new-session -A -s terminal' 
 
+# Colors
+set fish_color_normal white
+set fish_color_autosuggestion '#555555'
+set fish_color_command white
+set fish_color_error '#ff6c6b'
+set fish_color_param '#777777'
 
-#=== COLORS ===
-# Fish colors
-
-# Default Color
-set fish_color_normal brpurple
-
-# Suggestion Color
-set fish_color_autosuggestion '#8114b8'
-
-# Command Color
-set fish_color_command brpurple
-
-# Error Color
-set fish_color_error '#D11313'
-
-# Parameter Color
-set fish_color_param brpurple
-
-
-#=== TMUX ===
-# Attach to tmux session
-if status is-interactive
-and not set -q TMUX
-    exec tmux -f ~/tmux.conf new-session -A -s terminal
-end
-
-#=== CLEANUP ===
-
-# clear outputs
 clear 
 
-#=== INITIALISATION ===
-
-# Init startship
+# Init starship
 starship init fish | source  
-
-# Init zoxide
-zoxide init --cmd cd fish | source
