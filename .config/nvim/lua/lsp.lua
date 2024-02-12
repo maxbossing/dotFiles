@@ -35,6 +35,10 @@ local on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
+  -- Keiner Mag Autoformat
+  client.server_capabilities.documentFormattingProvider = false
+  client.server_capabilities.documentRangeFormattingProvider = false
+
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
@@ -59,6 +63,7 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
   properties = { "documentation", "detail", "additionalTextEdits" },
 }
 
+
 require('lspconfig').clangd.setup{
   on_attach = on_attach,
   cmd = {
@@ -78,4 +83,5 @@ require('lspconfig').clangd.setup{
   root_dir = require('lspconfig').util.root_pattern("src"),
   init_option = { fallbackFlags = {  "-std=c++2a"  } },
   capabilities = capabilities
+
 }

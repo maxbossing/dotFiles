@@ -33,7 +33,10 @@ require("lazy").setup({
     -- LSP
     {
 	  'neovim/nvim-lspconfig',
-	  dependencies = {
+	  --opts = {
+      --autoformat = false
+    --},
+    dependencies = {
  	    'hrsh7th/cmp-nvim-lsp',
 	    'hrsh7th/nvim-cmp',
 	    'sirver/ultisnips',
@@ -92,7 +95,6 @@ require("lazy").setup({
     'ellisonleao/gruvbox.nvim',
 
     -- Syntax highlighting
-    'sheerun/vim-polyglot',
     'nvim-treesitter/nvim-treesitter',
 
     -- VimWiki
@@ -101,6 +103,9 @@ require("lazy").setup({
     -- Git
     'tpope/vim-fugitive',
 
-        -- Switch between .h and .c
-    'linluk/vim-c2h'
-})
+    -- Switch between .h and .c
+    'linluk/vim-c2h',
+    
+    -- Discord rich presence
+    'andweeb/presence.nvim',
+  })

@@ -13,8 +13,8 @@ vim.cmd([[colorscheme gruvbox]])
 vim.g.mapleader = ' '
 
 -- Tabs sind für lutscher
-vim.opt["tabstop"] = 2
-vim.opt["shiftwidth"] = 2
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
 vim.o.expandtab = true
 
 -- Numbers on the side
@@ -93,3 +93,5 @@ require("which-key")
 
 -- Custom scripts
 require('notifications')
+
+
