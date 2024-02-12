@@ -1,31 +1,43 @@
-# Dotfiles
 
-This repository holds my personal configgurations
+This repository holds my personal configurations
 
 ## Contents
 This repository currently holds configs for:
-* alacritty          (terminal emulator)
-* bspwm              (window manager)
-* conky              (system monitor)
-* fish               (shell)
-* git                (source code management tool)
-* midnight commander (file manager)
-* mutt               (email client)
-* neofetch           (system information)
-* neovim             (editor)
-* polybar            (system bar for bspwm)
-* rofi               (application launcher)
-* st*                (terminal emulator)
-* starship           (shell prompt)
-* sxhkd              (keybind daemon)     
-* tmux               (terminal multiplexer)
 
-> NOTE: entries with an asterisk (*) behind their names are located in their own repository and integrated via git submodules
+**Terminals**
+* alacritty
+* kitty
+* st*
 
+**Window Managers**
+* bspwm
+* dwm*
+
+**Shells**
+* fish
+
+**Launchers**
+* rofi
+* dmenu*
+
+**CLI Tools**
+* tmux
+* neovim
+* mutt
+* git
+* starship          
+* midnight commander
+
+**GUI Tools**
+* conky
+* polybar
+* sxhkd    
+
+> NOTE: entries with an asterisk (`*`) behind their names are located in their own repository and integrated via git submodules
 
 ## DEPENDENCIES
-* Fira Code (https://github.com/tonsky/firacode)
-* GCC
+* Fira Code (Nerd Patch)
+* clang 
 * GNU make
 
 ## License
