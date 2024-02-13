@@ -22,7 +22,7 @@ alias switchto2='gpg-connect-agent "20576243" "learn --force" /bye'
 alias ls='exa -al --group-directories-first --icons --color=always --git'
 
 # attach to tmux session
-alias attach='tmux -f ~/tmux.conf/ new-session -A -s terminal' 
+alias attach='tmux -f ~/tmux.conf new-session -A -s terminal' 
 
 # Colors
 set fish_color_normal white
