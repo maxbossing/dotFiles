@@ -1,0 +1,11 @@
+yubikey-manager
+fish
+starship
+exa
+base-devel
+neovim
+kitty
+firefox
+discord
+mutt
+opendoas
