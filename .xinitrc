@@ -1,3 +1,4 @@
+# dwm system tray
 while true; do
   mem=$(free | awk '/Mem/{printf("%.1f"), $3/($2+.000000001)*100}')
   cpu=$(top -bn1 | grep "Cpu(s)" | \
@@ -7,6 +8,11 @@ while true; do
   sleep 10s
 done &
 
-bash ~/.screenlayout/main.sh
+# Monitor layout
+bash ~/screens.sh
 
+# Background
+feh --bg-fill ~/.local/share/backgrounds/serotonin.png
+
+# execute dwm
 exec dwm
