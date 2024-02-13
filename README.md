@@ -33,6 +33,8 @@ This repository currently holds configs for:
 * polybar
 * sxhkd    
 
+* Also wallpapers
+
 > NOTE: entries with an asterisk (`*`) behind their names are located in their own repository and integrated via git submodules
 
 ## DEPENDENCIES
