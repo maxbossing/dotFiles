@@ -14,4 +14,6 @@
 feh --bg-fill ~/.local/share/backgrounds/xanax.png
 
 # execute dwm
+exec dwm
+# execute i3 
 exec i3
