@@ -10,11 +10,12 @@
 #  sleep 10s
 #done &
 
-# Background
-feh --bg-fill ~/.local/share/backgrounds/xanax.png
 
 # Compositor
-picom &
+picom -b --config /home/max/.config/picom.conf
+
+# Background
+feh --bg-fill ~/.local/share/backgrounds/testosterone.png
 
 # execute dwm
 #exec dwm
