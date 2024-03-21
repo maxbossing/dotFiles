@@ -15,7 +15,7 @@ require("lazy").setup({
     -- Fuzzy finder
     {
       'nvim-telescope/telescope.nvim', tag = '0.1.5',
-      dependencies = { 
+      dependencies = {
 	    'nvim-lua/plenary.nvim',
 	    'BurntSushi/ripgrep',
 	    'sharkdp/fd',
@@ -26,7 +26,7 @@ require("lazy").setup({
     -- Status line
     {
 	  'nvim-lualine/lualine.nvim',
-	   dependencies = 
+	   dependencies =
          { 'nvim-tree/nvim-web-devicons' }
     },
 
@@ -44,22 +44,39 @@ require("lazy").setup({
         'quangnguyen30192/cmp-nvim-ultisnips'
 	  }
     },
-    
+
+    {
+      'VonHeikemen/lsp-zero.nvim',
+      branch = 'v1.x',
+      dependencies = {
+        'neovim/nvim-lspconfig',
+        'williamboman/mason.nvim',
+        'williamboman/mason-lspconfig.nvim',
+        'hrsh7th/nvim-cmp',
+		    'hrsh7th/cmp-buffer',
+		    'hrsh7th/cmp-path',
+		    'saadparwaiz1/cmp_luasnip',
+		    'hrsh7th/cmp-nvim-lsp',
+		    'hrsh7th/cmp-nvim-lua',
+      }
+    },
+
+
     -- File explorer
     {
       'nvim-tree/nvim-tree.lua',
-      dependencies = 
+      dependencies =
         { 'nvim-tree/nvim-web-devicons' }
     },
-    
+
     -- Code Navigator
     {
       'ray-x/navigator.lua',
       dependencies = {
-        { 'ray-x/guihua.lua', build = 'cd lua/fzy && make'},    
+        { 'ray-x/guihua.lua', build = 'cd lua/fzy && make'},
       }
     },
-    
+
     -- Error/warning window
     {
       'folke/trouble.nvim',
@@ -72,18 +89,25 @@ require("lazy").setup({
     -- Edit the filesystem like a buffer
     {
       'stevearc/oil.nvim',
-      dependencies = 
+      dependencies =
         { "nvim-tree/nvim-web-devicons" },
     },
 
     {
-     "folke/which-key.nvim",
-      event = "VeryLazy",
-      init = function()
-          vim.o.timeout = true
-          vim.o.timeoutlen = 300
-        end,
+      'nvim-telescope/telescope-media-files.nvim',
+      dependencies = {
+        'nvim-lua/popup.nvim'
+      }
     },
+
+    {
+        "lukas-reineke/headlines.nvim",
+        dependencies = "nvim-treesitter/nvim-treesitter",
+        config = true, -- or `opts = {}`
+    },
+
+    -- Color Scheme
+    'folke/tokyonight.nvim',
 
     -- Notifications
     'rcarriga/nvim-notify',
@@ -91,21 +115,22 @@ require("lazy").setup({
     -- Show function signature
     'ray-x/lsp_signature.nvim',
 
-    -- Color scheme
-    'ellisonleao/gruvbox.nvim',
-
     -- Syntax highlighting
     'nvim-treesitter/nvim-treesitter',
 
-    -- VimWiki
-    'vimwiki/vimwiki',
-    
     -- Git
     'tpope/vim-fugitive',
 
     -- Switch between .h and .c
     'linluk/vim-c2h',
-    
+
     -- Discord rich presence
     'andweeb/presence.nvim',
+
+    -- Global notes
+    'backdround/global-note.nvim',
+
+    -- Vim motions
+    'ThePrimeagen/vim-be-good',
+
   })

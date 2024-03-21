@@ -7,7 +7,7 @@ require("plugins")
 -- Colorscheme
 vim.opt.termguicolors = true
 vim.o.background = "dark"
-vim.cmd([[colorscheme gruvbox]])
+vim.cmd([[colorscheme tokyonight]])
 
 -- Map leader to space
 vim.g.mapleader = ' '
@@ -29,14 +29,14 @@ vim.keymap.set('n', '<leader>r', ':so %<CR>')
 
 -- Lualine setup
 require('lualine').setup {
-    options = {
-      icons_enabled = true,
-      theme = 'auto',
-      section_separators = { left = '', right = '' }, 
-      component_separators = { left = '', right = '' }
-    },
+  options = {
+    icons_enabled = true,
+    theme = 'auto',
+    section_separators = { left = '', right = '' },
+    component_separators = { left = '', right = '' }
+  },
 }
- 
+
 -- LSP setup
 require("lsp")
 
@@ -46,15 +46,6 @@ require('lsp_signature').setup()
 require("nvim-tree").setup()
 vim.keymap.set('n', '<leader>ff', ':NvimTreeFocus<CR>')
 vim.keymap.set('n', '<leader>ft', ':NvimTreeToggle<CR>')
-
--- Vimwiki setup
-vim.keymap.set('n', '<leader>ww', ':VimwikiIndex<CR>')
-vim.cmd[[hi VimwikiHeader1 gui=bold guifg=#A6BE26]]
-vim.cmd[[hi VimwikiHeader2 gui=bold guifg=#f49ac2]]
-vim.cmd[[hi VimwikiHeader3 gui=bold guifg=#f21840]]
-vim.cmd[[hi VimwikiHeader4 gui=bold guifg=#F97a40]]
-vim.cmd[[hi VimwikiHeader5 gui=bold guifg=#088da5]]
-vim.cmd[[hi VimwikiHeader6 gui=bold guifg=#ee5555]]
 
 -- Treesitter setup
 require('nvim-treesitter.configs').setup {
@@ -73,12 +64,14 @@ vim.keymap.set('n', '<leader>e', ':TroubleToggle<CR>')
 vim.notify = require('notify')
 
 -- Telescope setup
-require('telescope').load_extension('fzf')
+local telescope = require('telescope')
+telescope.load_extension('fzf')
+telescope.load_extension('media_files')
 vim.keymap.set('n', '<leader>tf', ':Telescope find_files<CR>')  -- file search
-vim.keymap.set('n', '<leader>tg', ':Telescope live_grep<CR>')   -- ripgrep search 
+vim.keymap.set('n', '<leader>tg', ':Telescope live_grep<CR>')   -- ripgrep search
 vim.keymap.set('n', '<leader>tb', ':Telescope buffers<CR>')     -- buffer peak
 vim.keymap.set('n', '<leader>th', ':Telescope help_tags<CR>')   -- help menu
-vim.keymap.set('n', '<leader>tt', ':Telescope treesitter <CR>') -- treesitter symbol menu 
+vim.keymap.set('n', '<leader>tt', ':Telescope treesitter <CR>') -- treesitter symbol menu
 vim.keymap.set('n', '<leader>tn', ':Telescope notify<CR>')      -- notificationa
 vim.keymap.set('n', '<leader>tp', ':Telescope builtin<CR>')     -- picker picker lmao
 
@@ -88,10 +81,52 @@ require('oil').setup()
 -- c2h setup
 vim.keymap.set('n', '<leader>ch', ':C2H<CR>')
 
--- which-key setup
-require("which-key")
+-- Global notes setup
+local global_note = require('global-note')
+global_note.setup()
+vim.keymap.set('n', '<leader>n', global_note.toggle_note)
 
--- Custom scripts
-require('notifications')
+require("headlines").setup {
+    markdown = {
+        query = vim.treesitter.query.parse(
+            "markdown",
+            [[
+                (atx_heading [
+                    (atx_h1_marker)
+                    (atx_h2_marker)
+                    (atx_h3_marker)
+                    (atx_h4_marker)
+                    (atx_h5_marker)
+                    (atx_h6_marker)
+                ] @headline)
 
+                (thematic_break) @dash
 
+                (fenced_code_block) @codeblock
+
+                (block_quote_marker) @quote
+                (block_quote (paragraph (inline (block_continuation) @quote)))
+                (block_quote (paragraph (block_continuation) @quote))
+                (block_quote (block_continuation) @quote)
+            ]]
+        ),
+        headline_highlights = { "Headline" },
+        bullet_highlights = {
+            "@text.title.1.marker.markdown",
+            "@text.title.2.marker.markdown",
+            "@text.title.3.marker.markdown",
+            "@text.title.4.marker.markdown",
+            "@text.title.5.marker.markdown",
+            "@text.title.6.marker.markdown",
+        },
+        bullets = { "◉", "○", "✸", "✿" },
+        codeblock_highlight = "CodeBlock",
+        dash_highlight = "Dash",
+        dash_string = "-",
+        quote_highlight = "Quote",
+        quote_string = "┃",
+        fat_headlines = true,
+        fat_headline_upper_string = "▃",
+        fat_headline_lower_string = "🬂",
+    },
+}

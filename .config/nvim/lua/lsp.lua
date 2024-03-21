@@ -2,7 +2,6 @@ local cmp = require("cmp")
 
 require("cmp_nvim_ultisnips").setup{}
 local cmp_ultisnips_mappings = require("cmp_nvim_ultisnips.mappings")
-
 cmp.setup({
     snippet = {
       expand = function(args)
@@ -21,12 +20,12 @@ cmp.setup({
       ['<CR>'] = cmp.mapping.confirm({ select = false, behavior = cmp.ConfirmBehavior.Insert }),
     },
     sources = cmp.config.sources({
-        { name = 'nvim_lsp' },
-        -- { name = 'vsnip' }, -- For vsnip users.
-        -- { name = 'luasnip' }, -- For luasnip users.
-        { name = 'ultisnips' }, -- For ultisnips users.
-        -- { name = 'snippy' }, -- For snippy users.
-      }, {
+         { name = 'nvim_lsp' },
+         { name = 'vsnip' }, -- For vsnip users.
+         { name = 'luasnip' }, -- For luasnip users.
+         { name = 'ultisnips' }, -- For ultisnips users.
+         { name = 'snippy' }, -- For snippy users.
+    }, {
         { name = 'buffer' },
     })
 })
@@ -57,31 +56,46 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', ',f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities.textDocument.completion.completionItem.resolveSupport = {
-  properties = { "documentation", "detail", "additionalTextEdits" },
-}
+--local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+--capabilities.textDocument.completion.completionItem.snippetSupport = true
+--capabilities.textDocument.completion.completionItem.resolveSupport = {
+ -- properties = { "documentation", "detail", "additionalTextEdits" },
+--}
 
 
-require('lspconfig').clangd.setup{
-  on_attach = on_attach,
-  cmd = {
-    "/usr/bin/clangd",
-    "--background-index",
-    "--pch-storage=memory",
-    "--all-scopes-completion",
-    "--pretty",
-    "--header-insertion=never",
-    "-j=4",
-    "--inlay-hints",
-    "--header-insertion-decorators",
-    "--function-arg-placeholders",
-    "--completion-style=detailed"
-  },
-  filetypes = {"c", "cpp", "objc", "objcpp"},
-  root_dir = require('lspconfig').util.root_pattern("src"),
-  init_option = { fallbackFlags = {  "-std=c++2a"  } },
-  capabilities = capabilities
+--require('lspconfig').clangd.setup{
+  --on_attach = on_attach,
+  --cmd = {
+    --"/usr/bin/clangd",
+    --"--background-index",
+    --"--pch-storage=memory",
+    --"--all-scopes-completion",
+    --"--pretty",
+    --"--header-insertion=never",
+    --"-j=4",
+    --"--inlay-hints",
+    --"--header-insertion-decorators",
+    --"--function-arg-placeholders",
+    --"--completion-style=detailed"
+  --},
+  --filetypes = {"c", "cpp", "objc", "objcpp"},
+  --root_dir = require('lspconfig').util.root_pattern("src"),
+  --init_option = { fallbackFlags = {  "-std=c++2a"  } },
+  --capabilities = capabilities
+--}
 
-}
+local lsp = require('lsp-zero')
+lsp.preset('recommended')
+
+lsp.ensure_installed({
+  'rust_analyzer',
+  'lua_ls',
+  'clangd',
+})
+
+
+lsp.on_attach(on_attach)
+
+lsp.setup()
+
+

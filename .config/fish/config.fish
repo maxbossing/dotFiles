@@ -24,6 +24,9 @@ alias ls='exa -al --group-directories-first --icons --color=always --git'
 # attach to tmux session
 alias attach='tmux -f ~/tmux.conf new-session -A -s terminal' 
 
+# hö
+alias ed='nvim'
+
 # Colors
 set fish_color_normal white
 set fish_color_autosuggestion '#555555'
