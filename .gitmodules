@@ -1,9 +1,9 @@
 [submodule "st"]
 	path = st
-	url = https://github.com/maxbossing/st
+	url = https://git.exobyte.dev/max/st 
 [submodule "dwm"]
 	path = dwm
-	url = git@github.com:maxbossing/dwm.git
+	url = https://git.exobyte.dev/max/dwm
 [submodule "dmenu"]
 	path = dmenu
-	url = git@github.com:maxbossing/dmenu.git
+  url = https://git.exobyte.dev/max/dmenu
