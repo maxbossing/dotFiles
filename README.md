@@ -12,6 +12,7 @@ This repository currently holds configs for:
 **Window Managers**
 * bspwm
 * dwm*
+* i3
 
 **Shells**
 * fish
@@ -32,6 +33,7 @@ This repository currently holds configs for:
 * conky
 * polybar
 * sxhkd    
+* i3status
 
 * Also wallpapers
 
