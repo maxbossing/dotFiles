@@ -13,7 +13,10 @@
 # Background
 feh --bg-fill ~/.local/share/backgrounds/xanax.png
 
+# Compositor
+picom &
+
 # execute dwm
-exec dwm
+#exec dwm
 # execute i3 
 exec i3
