@@ -14,6 +14,6 @@ background_opacity 0
 dynamic_background_opacity yes
 
 # BEGIN_KITTY_THEME
-# Catppuccin-Macchiato
+# Tokyo Night Storm
 include current-theme.conf
 # END_KITTY_THEME

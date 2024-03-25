@@ -108,7 +108,8 @@ require("lazy").setup({
 
     -- Color Scheme
     'folke/tokyonight.nvim',
-
+    { "catppuccin/nvim", name = "catpuccin" },
+    
     -- Notifications
     'rcarriga/nvim-notify',
 

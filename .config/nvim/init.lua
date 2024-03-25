@@ -4,10 +4,13 @@ vim.g.loaded_netrwPlugin = 1
 
 require("plugins")
 
--- Colorscheme
+-- Colorscheme 
+require("catppuccin").setup ({
+  transparent_background = true
+})
 vim.opt.termguicolors = true
 vim.o.background = "dark"
-vim.cmd([[colorscheme tokyonight]])
+vim.cmd([[colorscheme catppuccin-macchiato]])
 
 -- Map leader to space
 vim.g.mapleader = ' '
@@ -87,3 +90,4 @@ global_note.setup()
 vim.keymap.set('n', '<leader>n', global_note.toggle_note)
 
 require("headlines").setup()
+
