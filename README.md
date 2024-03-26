@@ -29,5 +29,17 @@ This is my dotfile repository, holding my configurations for various programs (W
 | waybar    | Wayland bar              | `.config/waybar`        |
 | wofi      | Wayland program launcher | `.config/wofi`          |
 
+# Installation
+
+
+## 1. The automated way 
+
+* Use `install.sh`
+## 2. The manual way 
+
+* Install the packages from `packages.txt`
+* Install paru from source and dwm, dmenu and st from their directories
+* Move/Link the Dotfiles
+
 # License
 MIT
