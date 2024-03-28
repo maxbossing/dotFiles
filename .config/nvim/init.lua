@@ -90,4 +90,4 @@ global_note.setup()
 vim.keymap.set('n', '<leader>n', global_note.toggle_note)
 
 require("headlines").setup()
-
+require('leap').create_default_mappings()

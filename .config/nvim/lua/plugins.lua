@@ -16,35 +16,34 @@ require("lazy").setup({
     {
       'nvim-telescope/telescope.nvim', tag = '0.1.5',
       dependencies = {
-	    'nvim-lua/plenary.nvim',
-	    'BurntSushi/ripgrep',
-	    'sharkdp/fd',
-	    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }
+        'nvim-lua/plenary.nvim',
+        'BurntSushi/ripgrep',
+        'sharkdp/fd',
+        { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }
       }
     },
 
     -- Status line
     {
-	  'nvim-lualine/lualine.nvim',
-	   dependencies =
-         { 'nvim-tree/nvim-web-devicons' }
+      'nvim-lualine/lualine.nvim',
+       dependencies = {
+         'nvim-tree/nvim-web-devicons'
+       }
     },
 
     -- LSP
     {
-	  'neovim/nvim-lspconfig',
-	  --opts = {
-      --autoformat = false
-    --},
-    dependencies = {
- 	    'hrsh7th/cmp-nvim-lsp',
-	    'hrsh7th/nvim-cmp',
-	    'sirver/ultisnips',
+      'neovim/nvim-lspconfig',
+      dependencies = {
+        'hrsh7th/cmp-nvim-lsp',
+        'hrsh7th/nvim-cmp',
+        'sirver/ultisnips',
         'hrsh7th/vim-vsnip',
         'quangnguyen30192/cmp-nvim-ultisnips'
-	  }
+      }
     },
 
+    -- LSP
     {
       'VonHeikemen/lsp-zero.nvim',
       branch = 'v1.x',
@@ -65,22 +64,28 @@ require("lazy").setup({
     -- File explorer
     {
       'nvim-tree/nvim-tree.lua',
-      dependencies =
-        { 'nvim-tree/nvim-web-devicons' }
+      dependencies = {
+        'nvim-tree/nvim-web-devicons'
+      }
     },
 
     -- Code Navigator
     {
       'ray-x/navigator.lua',
       dependencies = {
-        { 'ray-x/guihua.lua', build = 'cd lua/fzy && make'},
+        {
+          'ray-x/guihua.lua',
+          build = 'cd lua/fzy && make'
+        },
       }
     },
 
     -- Error/warning window
     {
       'folke/trouble.nvim',
-      dependencies = { 'nvim-tree/nvim-web-devicons' },
+      dependencies = {
+        'nvim-tree/nvim-web-devicons'
+      },
       opts = {
         use_diagnostic_signs = true
       }
@@ -89,8 +94,9 @@ require("lazy").setup({
     -- Edit the filesystem like a buffer
     {
       'stevearc/oil.nvim',
-      dependencies =
-        { "nvim-tree/nvim-web-devicons" },
+      dependencies = {
+        'nvim-tree/nvim-web-devicons'
+      },
     },
 
     {
@@ -101,15 +107,26 @@ require("lazy").setup({
     },
 
     {
-        "lukas-reineke/headlines.nvim",
-        dependencies = "nvim-treesitter/nvim-treesitter",
-        config = true, -- or `opts = {}`
+      'lukas-reineke/headlines.nvim',
+      dependencies = {
+        'nvim-treesitter/nvim-treesitter'
+      },
+      config = true, -- or `opts = {}`
     },
 
     -- Color Scheme
-    'folke/tokyonight.nvim',
-    { "catppuccin/nvim", name = "catpuccin" },
-    
+    {
+      'catppuccin/nvim',
+      name = 'catpuccin'
+    },
+
+    {
+      'ggandor/leap.nvim',
+      dependencies = {
+        'tpope/vim-repeat'
+      }
+    },
+
     -- Notifications
     'rcarriga/nvim-notify',
 
@@ -134,4 +151,9 @@ require("lazy").setup({
     -- Vim motions
     'ThePrimeagen/vim-be-good',
 
-  })
+    -- Git status
+    'airblade/vim-gitgutter',
+
+    -- Vim surround
+    'tpope/vim-surround',
+})
