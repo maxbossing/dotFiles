@@ -17,3 +17,12 @@ bspwm
 sxhkd
 tmux
 waybar
+blueman
+bluez
+ripgrep
+fd
+network-manager-applet
+network-manager-applet
+polkit
+dunst
+pamixer

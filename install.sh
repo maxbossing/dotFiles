@@ -116,15 +116,37 @@ function link() {
   echo "Finished linking dotfiles..."
 }
 
+function configure() {
+  echo "Setting up doas..."
+  sudo touch /etc/doas.conf
+  echo "pemrit nopass $USER as root" | sudo tee -a /etc/doas.conf
+  
+  echo "Setting up pacman..."
+  doas sed -i -e '#/#Color/Color/' /etc/pacman.conf
+  doas sed -i -e '#/#ParallelDownloads = 5/ParallelDownloads = 5/' /etc/pacman.conf
+  echo "ILoveCandy" | doas tee -a /etc/pacman.conf
+
+  echo "Configuring paru..."
+  doas sed -i -e 's/#[bin]/[bin]/' /etc/paru.conf
+  doas sed -i -e 's/#Sudo = doas/Sudo = doas' /etc/paru.conf
+  
+  echo "Configuring bluetooth..."
+  doas systemctl enable bluetooth
+  doas systemctl start bluetooth
+  
+  echo "Configuring NetworkManager"
+  doas systemctl enable NetworkManager
+  doas systemctl start NetworkManager
+
+  echo "Changing Shell..."
+  chsh -s /usr/bin/fish
+}
 
 function main() {
   install_packages()
   install_compiled()
   link()
-
-  echo "Changing Shell..."
-  chsh -s /usr/bin/fish
-
+  configure()
   echo "Finished!"
 }
 
