@@ -41,5 +41,14 @@ This is my dotfile repository, holding my configurations for various programs (W
 * Install paru from source and dwm, dmenu and st from their directories
 * Move/Link the Dotfiles
 
+# Usage
+
+## Launching a Window Manager
+
+*The Install script automatically links a `launch` script into `~/.local/bin/` that you can Use
+* Just execute `launch` and the last Window Manager you used will be launched (by default, Hyprland)
+* If you want to use another window manager, use `launch dwm/i3/bspwm`
+* The script stores the last used Window manager in `~/.wm` (first line is the window manager name/Wayland Compositor launch command, the second line true/false if XORG or wayland)
+
 # License
 MIT
