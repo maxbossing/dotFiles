@@ -4,8 +4,8 @@ vim.g.loaded_netrwPlugin = 1
 
 require("plugins")
 
--- Colorscheme 
-require("catppuccin").setup ({
+-- Colorscheme
+require("catppuccin").setup({
   transparent_background = true
 })
 vim.opt.termguicolors = true
@@ -64,7 +64,11 @@ require('navigator').setup()
 vim.keymap.set('n', '<leader>e', ':TroubleToggle<CR>')
 
 -- Nvim-notify setup
-vim.notify = require('notify')
+local notify = require('notify')
+notify.setup({
+  background_colour = "#000000"
+})
+vim.notify = notify
 
 -- Telescope setup
 local telescope = require('telescope')
