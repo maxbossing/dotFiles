@@ -113,6 +113,10 @@ function link() {
   rm -rf "$HOME/.config/wofi"
   ln -s "$DIR/.config/wofi" "$HOME/.config/"
   
+  mkdir "$HOME/.local/bin"
+  ln -s "$DIR/launch" "$HOME/.local/bin/"
+  ln -s "$DIR/.wm" "$HOME/"
+
   echo "Finished linking dotfiles..."
 }
 
