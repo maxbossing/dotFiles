@@ -17,11 +17,4 @@ picom -b --config /home/max/.config/picom.conf
 # Background
 feh --bg-fill ~/.local/share/backgrounds/testosterone.png
 
-# execute dwm
-#exec dwm
-
-# execute bspwm
-#exec bspwm
-
-# execute i3 
 exec i3
