@@ -10,7 +10,7 @@ eval (ssh-agent -c)
 gpg-agent --enable-ssh-support
 set SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
 set GPG_TTY (tty)
-exporn GPG_TTY=$(tty)
+export GPG_TTY=$(tty)
 gpg-connect-agent updatestartuptty /bye >/dev/null
 
 # Switch gpg to backup keys
