@@ -10,7 +10,7 @@ eval (ssh-agent -c)
 gpg-agent --enable-ssh-support
 set SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
 set GPG_TTY (tty)
-export GPG_TTY=$(tty)
+export GPG_TTY=(tty)
 gpg-connect-agent updatestartuptty /bye >/dev/null
 
 # Switch gpg to backup keys
@@ -20,7 +20,7 @@ alias switchto1='gpg-connect-agent "20576321" "learn --force" /bye'
 alias switchto2='gpg-connect-agent "20576243" "learn --force" /bye'
 
 # exa > ls
-alias ls='exa -al --group-directories-first --icons --color=always --git'
+alias ls='exa -al --group-directories-first --icons --color=always'
 
 # attach to tmux session
 alias attach='tmux -f ~/tmux.conf new-session -A -s terminal' 

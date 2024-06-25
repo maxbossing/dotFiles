@@ -60,20 +60,11 @@ require('nvim-treesitter.configs').setup {
 -- Navigator setup
 require('navigator').setup()
 
--- Trouble setup
-vim.keymap.set('n', '<leader>e', ':TroubleToggle<CR>')
-
--- Nvim-notify setup
-local notify = require('notify')
-notify.setup({
-  background_colour = "#000000"
-})
-vim.notify = notify
-
 -- Telescope setup
 local telescope = require('telescope')
 telescope.load_extension('fzf')
 telescope.load_extension('media_files')
+telescope.load_extension('emoji')
 vim.keymap.set('n', '<leader>tf', ':Telescope find_files<CR>')  -- file search
 vim.keymap.set('n', '<leader>tg', ':Telescope live_grep<CR>')   -- ripgrep search
 vim.keymap.set('n', '<leader>tb', ':Telescope buffers<CR>')     -- buffer peak
@@ -81,6 +72,8 @@ vim.keymap.set('n', '<leader>th', ':Telescope help_tags<CR>')   -- help menu
 vim.keymap.set('n', '<leader>tt', ':Telescope treesitter <CR>') -- treesitter symbol menu
 vim.keymap.set('n', '<leader>tn', ':Telescope notify<CR>')      -- notificationa
 vim.keymap.set('n', '<leader>tp', ':Telescope builtin<CR>')     -- picker picker lmao
+vim.keymap.set('n', '<leader>te', ':Telescope emoji<CR>')       -- emoji picker
+
 
 -- File System editor setup
 require('oil').setup()

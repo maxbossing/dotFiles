@@ -12,148 +12,164 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-    -- Fuzzy finder
-    {
-      'nvim-telescope/telescope.nvim', tag = '0.1.5',
-      dependencies = {
-        'nvim-lua/plenary.nvim',
-        'BurntSushi/ripgrep',
-        'sharkdp/fd',
-        { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }
-      }
-    },
+  -- Fuzzy finder
+  {
+    'nvim-telescope/telescope.nvim',
+    tag = '0.1.5',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'BurntSushi/ripgrep',
+      'sharkdp/fd',
+      { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }
+    }
+  },
 
-    -- Status line
-    {
-      'nvim-lualine/lualine.nvim',
-       dependencies = {
-         'nvim-tree/nvim-web-devicons'
-       }
-    },
+  -- Status line
+  {
+    'nvim-lualine/lualine.nvim',
+    dependencies = {
+      'nvim-tree/nvim-web-devicons'
+    }
+  },
 
-    -- LSP
-    {
+  -- LSP
+  {
+    'neovim/nvim-lspconfig',
+    dependencies = {
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/nvim-cmp',
+      'sirver/ultisnips',
+      'hrsh7th/vim-vsnip',
+      'quangnguyen30192/cmp-nvim-ultisnips'
+    }
+  },
+
+  -- LSP
+  {
+    'VonHeikemen/lsp-zero.nvim',
+    branch = 'v1.x',
+    dependencies = {
       'neovim/nvim-lspconfig',
-      dependencies = {
-        'hrsh7th/cmp-nvim-lsp',
-        'hrsh7th/nvim-cmp',
-        'sirver/ultisnips',
-        'hrsh7th/vim-vsnip',
-        'quangnguyen30192/cmp-nvim-ultisnips'
-      }
-    },
-
-    -- LSP
-    {
-      'VonHeikemen/lsp-zero.nvim',
-      branch = 'v1.x',
-      dependencies = {
-        'neovim/nvim-lspconfig',
-        'williamboman/mason.nvim',
-        'williamboman/mason-lspconfig.nvim',
-        'hrsh7th/nvim-cmp',
-		    'hrsh7th/cmp-buffer',
-		    'hrsh7th/cmp-path',
-		    'saadparwaiz1/cmp_luasnip',
-		    'hrsh7th/cmp-nvim-lsp',
-		    'hrsh7th/cmp-nvim-lua',
-      }
-    },
+      'williamboman/mason.nvim',
+      'williamboman/mason-lspconfig.nvim',
+      'hrsh7th/nvim-cmp',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'saadparwaiz1/cmp_luasnip',
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-nvim-lua',
+    }
+  },
 
 
-    -- File explorer
-    {
-      'nvim-tree/nvim-tree.lua',
-      dependencies = {
-        'nvim-tree/nvim-web-devicons'
-      }
-    },
+  -- File explorer
+  {
+    'nvim-tree/nvim-tree.lua',
+    dependencies = {
+      'nvim-tree/nvim-web-devicons'
+    }
+  },
 
-    -- Code Navigator
-    {
-      'ray-x/navigator.lua',
-      dependencies = {
-        {
-          'ray-x/guihua.lua',
-          build = 'cd lua/fzy && make'
-        },
-      }
-    },
-
-    -- Error/warning window
-    {
-      'folke/trouble.nvim',
-      dependencies = {
-        'nvim-tree/nvim-web-devicons'
+  -- Code Navigator
+  {
+    'ray-x/navigator.lua',
+    dependencies = {
+      {
+        'ray-x/guihua.lua',
+        build = 'cd lua/fzy && make'
       },
-      opts = {
-        use_diagnostic_signs = true
-      }
+    }
+  },
+
+  -- Error/warning window
+  {
+    'folke/trouble.nvim',
+    dependencies = {
+      'nvim-tree/nvim-web-devicons'
     },
-
-    -- Edit the filesystem like a buffer
-    {
-      'stevearc/oil.nvim',
-      dependencies = {
-        'nvim-tree/nvim-web-devicons'
-      },
+    opts = {
+      use_diagnostic_signs = true
     },
-
-    {
-      'nvim-telescope/telescope-media-files.nvim',
-      dependencies = {
-        'nvim-lua/popup.nvim'
-      }
+    keys = {
+      "<leader>e",
+      "<cmd>Trouble diagnostics toggle<cr>",
+      desc = "Diagnostics (Trouble)",
     },
+  },
 
-    {
-      'lukas-reineke/headlines.nvim',
-      dependencies = {
-        'nvim-treesitter/nvim-treesitter'
-      },
-      config = true, -- or `opts = {}`
+  -- Edit the filesystem like a buffer
+  {
+    'stevearc/oil.nvim',
+    dependencies = {
+      'nvim-tree/nvim-web-devicons'
     },
+  },
 
-    -- Color Scheme
-    {
-      'catppuccin/nvim',
-      name = 'catpuccin'
+  {
+    'nvim-telescope/telescope-media-files.nvim',
+    dependencies = {
+      'nvim-lua/popup.nvim'
+    }
+  },
+
+  {
+    'lukas-reineke/headlines.nvim',
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter'
     },
+    config = true, -- or `opts = {}`
+  },
 
-    {
-      'ggandor/leap.nvim',
-      dependencies = {
-        'tpope/vim-repeat'
-      }
-    },
+  {
+    'nvim-orgmode/orgmode',
+    event = 'VeryLazy',
+    ft = { 'org' },
+    config = function()
+      require('orgmode').setup({
+        org_agenda_files = '~/org/**/*',
+        org_default_notes_file = '~/org/refile.org',
+      })
+    end,
+  },
 
-    -- Notifications
-    'rcarriga/nvim-notify',
+  -- Color Scheme
+  {
+    'catppuccin/nvim',
+    name = 'catpuccin'
+  },
 
-    -- Show function signature
-    'ray-x/lsp_signature.nvim',
+  {
+    'ggandor/leap.nvim',
+    dependencies = {
+      'tpope/vim-repeat'
+    }
+  },
 
-    -- Syntax highlighting
-    'nvim-treesitter/nvim-treesitter',
+  -- Emoji picker for telescope
+  'xiyaowong/telescope-emoji.nvim',
 
-    -- Git
-    'tpope/vim-fugitive',
+  -- Show function signature
+  'ray-x/lsp_signature.nvim',
 
-    -- Switch between .h and .c
-    'linluk/vim-c2h',
+  -- Syntax highlighting
+  'nvim-treesitter/nvim-treesitter',
 
-    -- Discord rich presence
-    'andweeb/presence.nvim',
+  -- Git
+  'tpope/vim-fugitive',
 
-    -- Global notes
-    'backdround/global-note.nvim',
+  -- Switch between .h and .c
+  'linluk/vim-c2h',
 
-    -- Vim motions
-    'ThePrimeagen/vim-be-good',
+  -- Discord rich presence
+  'andweeb/presence.nvim',
 
-    -- Git status
-    'airblade/vim-gitgutter',
+  -- Global notes
+  'backdround/global-note.nvim',
 
-    -- Vim surround
-    'tpope/vim-surround',
+  -- Vim motions
+  'ThePrimeagen/vim-be-good',
+
+  -- Git status
+  'airblade/vim-gitgutter',
+
 })
