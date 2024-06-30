@@ -38,7 +38,6 @@ require("lazy").setup({
     dependencies = {
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/nvim-cmp',
-      'sirver/ultisnips',
       'hrsh7th/vim-vsnip',
       'quangnguyen30192/cmp-nvim-ultisnips'
     }
