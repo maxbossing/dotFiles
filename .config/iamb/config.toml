@@ -1,0 +1,7 @@
+default_profile = "user"
+
+[profiles.user]
+user_id = "@maxbossing:matrix.org"
+
+[settings]
+default_room = "#random:cccwi.de" 
