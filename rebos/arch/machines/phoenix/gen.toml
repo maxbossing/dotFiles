@@ -12,6 +12,7 @@ items = [
 items = [
   "gnome",
   "jetbrains-toolbox",
+  "tea",
 ]
 
 [managers.flatpak]
