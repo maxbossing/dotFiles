@@ -4,6 +4,7 @@ set fish_greeting
 # Set terminal/visual editor to nvim
 set EDITOR 'nvim'
 set VISUAL 'nvim'
+set PATH "$PATH:/home/max/.cargo/bin"
 
 # This is used so the pgp keys on my Yubikey can be used for ssh etc
 eval (ssh-agent -c)

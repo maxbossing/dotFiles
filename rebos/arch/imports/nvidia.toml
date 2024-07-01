@@ -1,0 +1,5 @@
+[managers.system]
+items = [
+  "nvidia-open-dkms",
+  "nvidia-utils"
+]

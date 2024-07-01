@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+## ENABLE ##
+echo "permit nopass max as root" | sudo tee > /etc/doas.conf 
+
+## MOVE ENVIRONMENT ##
+doas cp ~/.config/rebos/environment /etc/environment
+
+## FONT INSTALL ##
+curl -o /tmp/firacode.zip https://github.com/ryanoasis/nerd-fonts/releases/latest/download/FiraCode.zip
+doas mkdir -p /usr/share/fonts/fira
+doas unzip /tmp/firacode.zip -od /usr/share/fonts/fira/
+

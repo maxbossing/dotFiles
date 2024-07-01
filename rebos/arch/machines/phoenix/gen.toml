@@ -1,0 +1,21 @@
+imports = [
+  "nvidia",
+  "yubikey",
+]
+
+[managers.serv_now] 
+items = [
+  "gdm",
+]
+
+[managers.system]
+items = [
+  "gnome",
+  "jetbrains-toolbox",
+]
+
+[managers.flatpak]
+items = [
+  "com.modrinth.ModrinthApp",
+  "com.valvesoftware.Steam",
+]

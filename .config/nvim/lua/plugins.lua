@@ -39,7 +39,6 @@ require("lazy").setup({
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/nvim-cmp',
       'hrsh7th/vim-vsnip',
-      'quangnguyen30192/cmp-nvim-ultisnips'
     }
   },
 
@@ -117,18 +116,6 @@ require("lazy").setup({
       'nvim-treesitter/nvim-treesitter'
     },
     config = true, -- or `opts = {}`
-  },
-
-  {
-    'nvim-orgmode/orgmode',
-    event = 'VeryLazy',
-    ft = { 'org' },
-    config = function()
-      require('orgmode').setup({
-        org_agenda_files = '~/org/**/*',
-        org_default_notes_file = '~/org/refile.org',
-      })
-    end,
   },
 
   -- Color Scheme

@@ -1,0 +1,13 @@
+add = "paru -S #:?" 
+remove = "paru -Rns #:?" 
+sync = "paru -Sy " 
+upgrade = "paru -Syu" 
+
+plural_name = "system packages"
+
+hook_name = "system_packages" # This is used in hooks. (Example: post_system_packages_add)
+
+
+[config]
+# many_args = BOOL: Can you supply many items as an argument? Example: 'sudo apt install git vim wget'
+many_args = true
