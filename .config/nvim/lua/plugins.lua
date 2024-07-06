@@ -12,6 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+
   -- Fuzzy finder
   {
     'nvim-telescope/telescope.nvim',
@@ -20,27 +21,11 @@ require("lazy").setup({
       'nvim-lua/plenary.nvim',
       'BurntSushi/ripgrep',
       'sharkdp/fd',
-      { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }
+      { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+      'xiyaowong/telescope-emoji.nvim',
     }
   },
 
-  -- Status line
-  {
-    'nvim-lualine/lualine.nvim',
-    dependencies = {
-      'nvim-tree/nvim-web-devicons'
-    }
-  },
-
-  -- LSP
-  {
-    'neovim/nvim-lspconfig',
-    dependencies = {
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/nvim-cmp',
-      'hrsh7th/vim-vsnip',
-    }
-  },
 
   -- LSP
   {
@@ -59,14 +44,16 @@ require("lazy").setup({
     }
   },
 
-
-  -- File explorer
   {
-    'nvim-tree/nvim-tree.lua',
+    'neovim/nvim-lspconfig',
     dependencies = {
-      'nvim-tree/nvim-web-devicons'
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/nvim-cmp',
+      'hrsh7th/vim-vsnip',
     }
   },
+
+  'ray-x/lsp_signature.nvim',
 
   -- Code Navigator
   {
@@ -82,9 +69,6 @@ require("lazy").setup({
   -- Error/warning window
   {
     'folke/trouble.nvim',
-    dependencies = {
-      'nvim-tree/nvim-web-devicons'
-    },
     opts = {
       use_diagnostic_signs = true
     },
@@ -95,67 +79,53 @@ require("lazy").setup({
     },
   },
 
-  -- Edit the filesystem like a buffer
-  {
-    'stevearc/oil.nvim',
-    dependencies = {
-      'nvim-tree/nvim-web-devicons'
-    },
-  },
-
-  {
-    'nvim-telescope/telescope-media-files.nvim',
-    dependencies = {
-      'nvim-lua/popup.nvim'
-    }
-  },
-
-  {
-    'lukas-reineke/headlines.nvim',
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter'
-    },
-    config = true, -- or `opts = {}`
-  },
-
   -- Color Scheme
   {
     'catppuccin/nvim',
     name = 'catpuccin'
   },
 
+  -- Better nvim devicons
   {
-    'ggandor/leap.nvim',
-    dependencies = {
-      'tpope/vim-repeat'
-    }
+    "echasnovski/mini.icons",
+    opts = {},
+    lazy = true,
+    specs = {
+      { "nvim-tree/nvim-web-devicons", enabled = false, optional = true },
+    },
+    init = function()
+      package.preload["nvim-web-devicons"] = function()
+        require("mini.icons").mock_nvim_web_devicons()
+        return package.loaded["nvim-web-devicons"]
+      end
+    end,
   },
 
-  -- Emoji picker for telescope
-  'xiyaowong/telescope-emoji.nvim',
+  -- Markdown
+  {
+    "OXY2DEV/markview.nvim",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "echasnovski/mini.icons"
+    },
+  },
 
-  -- Show function signature
-  'ray-x/lsp_signature.nvim',
+  -- Status line
+  'nvim-lualine/lualine.nvim',
+
+  -- Edit the filesystem like a buffer
+  'stevearc/oil.nvim',
 
   -- Syntax highlighting
   'nvim-treesitter/nvim-treesitter',
 
-  -- Git
-  'tpope/vim-fugitive',
-
   -- Switch between .h and .c
   'linluk/vim-c2h',
-
-  -- Discord rich presence
-  'andweeb/presence.nvim',
 
   -- Global notes
   'backdround/global-note.nvim',
 
-  -- Vim motions
-  'ThePrimeagen/vim-be-good',
-
-  -- Git status
+  -- Git
+  'tpope/vim-fugitive',
   'airblade/vim-gitgutter',
-
 })

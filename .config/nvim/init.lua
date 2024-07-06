@@ -45,11 +45,6 @@ require("lsp")
 
 require('lsp_signature').setup()
 
--- File explorer setup
-require("nvim-tree").setup()
-vim.keymap.set('n', '<leader>ff', ':NvimTreeFocus<CR>')
-vim.keymap.set('n', '<leader>ft', ':NvimTreeToggle<CR>')
-
 -- Treesitter setup
 require('nvim-treesitter.configs').setup {
   highlight = {
@@ -63,7 +58,6 @@ require('navigator').setup()
 -- Telescope setup
 local telescope = require('telescope')
 telescope.load_extension('fzf')
-telescope.load_extension('media_files')
 telescope.load_extension('emoji')
 vim.keymap.set('n', '<leader>tf', ':Telescope find_files<CR>')  -- file search
 vim.keymap.set('n', '<leader>tg', ':Telescope live_grep<CR>')   -- ripgrep search
@@ -86,5 +80,40 @@ local global_note = require('global-note')
 global_note.setup()
 vim.keymap.set('n', '<leader>n', global_note.toggle_note)
 
-require("headlines").setup()
-require('leap').create_default_mappings()
+-- markview.nvim
+local markview = require("markview")
+local markpresets = require("markview.presets")
+markview.setup({
+  buf_ignore = { "nofile" },
+  modes = { "n" },
+
+  restore_conceallevel = true,
+  restore_concealcurser = false,
+
+  headings = {
+    enable = true,
+    shift_width = 2,
+  },
+
+  list_items = {
+    shift_amount = 1,
+    marker_plus = {
+      add_padding = true,
+      text = "•",
+      hl = "rainbow2"
+    },
+    marker_minus = {
+      add_padding = true,
+      text = "•",
+      hl = "rainbow4"
+    },
+    marker_star = {
+      add_padding = true,
+      text = "•",
+      text_hl = "rainbow2"
+    },
+    marker_dot = {
+      add_padding = true
+    },
+  },
+})
