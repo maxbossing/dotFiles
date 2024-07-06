@@ -13,6 +13,8 @@ items = [
   "gnome",
   "jetbrains-toolbox",
   "tea",
+  "virtualbox",
+  "virtualbox-host-dkms",
 ]
 
 [managers.flatpak]
