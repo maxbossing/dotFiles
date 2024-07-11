@@ -5,12 +5,10 @@ vim.g.loaded_netrwPlugin = 1
 require("plugins")
 
 -- Colorscheme
-require("catppuccin").setup({
-  transparent_background = true
-})
+vim.cmd[[colorscheme tokyonight-moon]]
+
 vim.opt.termguicolors = true
 vim.o.background = "dark"
-vim.cmd([[colorscheme catppuccin-macchiato]])
 
 -- Map leader to space
 vim.g.mapleader = ' '

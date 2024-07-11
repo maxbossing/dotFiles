@@ -80,10 +80,7 @@ require("lazy").setup({
   },
 
   -- Color Scheme
-  {
-    'catppuccin/nvim',
-    name = 'catpuccin'
-  },
+  "folke/tokyonight.nvim",
 
   -- Better nvim devicons
   {

@@ -1,15 +1,9 @@
-#██████╗  ██████╗ ████████╗███████╗██╗██╗     ███████╗███████╗
-#██╔══██╗██╔═══██╗╚══██╔══╝██╔════╝██║██║     ██╔════╝██╔════╝
-#██║  ██║██║   ██║   ██║   █████╗  ██║██║     █████╗  ███████╗
-#██║  ██║██║   ██║   ██║   ██╔══╝  ██║██║     ██╔══╝  ╚════██║ Author: Max Bossing <info@maxbossing.de>
-#██████╔╝╚██████╔╝   ██║   ██║     ██║███████╗███████╗███████║ Source: https://codeberg.org/maxbossing/dotfiles
-#╚═════╝  ╚═════╝    ╚═╝   ╚═╝     ╚═╝╚══════╝╚══════╝╚══════╝ File:   muttrc  
-
 #=== PERSONAL INFO ===
 set realname = "Max Bossing"
 set from = "maxbossing@mailbox.org"
 set envelope_from = yes
 
+set editor = nvim
 
 #=== MAIL SETUP===
 set imap_user = "maxbossing@mailbox.org"
