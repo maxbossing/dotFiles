@@ -5,7 +5,7 @@ vim.g.loaded_netrwPlugin = 1
 require("plugins")
 
 -- Colorscheme
-vim.cmd[[colorscheme tokyonight-moon]]
+vim.cmd [[colorscheme tokyonight-moon]]
 
 vim.opt.termguicolors = true
 vim.o.background = "dark"
@@ -91,6 +91,7 @@ markview.setup({
   headings = {
     enable = true,
     shift_width = 2,
+    style = "simple",
   },
 
   list_items = {
