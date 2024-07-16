@@ -2,6 +2,9 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+-- load legacy options
+vim.cmd([[so ~/.config/nvim/legacy.vim]])
+
 require("plugins")
 
 -- Colorscheme

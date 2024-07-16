@@ -116,9 +116,6 @@ require("lazy").setup({
   -- Syntax highlighting
   'nvim-treesitter/nvim-treesitter',
 
-  -- Switch between .h and .c
-  'linluk/vim-c2h',
-
   -- Global notes
   'backdround/global-note.nvim',
 
