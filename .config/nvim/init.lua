@@ -80,7 +80,6 @@ vim.keymap.set('n', '<leader>n', global_note.toggle_note)
 
 -- markview.nvim
 local markview = require("markview")
-local markpresets = require("markview.presets")
 markview.setup({
   buf_ignore = { "nofile" },
   modes = { "n" },
