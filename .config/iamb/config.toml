@@ -5,3 +5,7 @@ user_id = "@maxbossing:matrix.org"
 
 [settings]
 default_room = "#random:cccwi.de" 
+
+[settings.image_preview]
+protocol.type = "kitty"
+protocol.font_size = [ 11, 26 ]
