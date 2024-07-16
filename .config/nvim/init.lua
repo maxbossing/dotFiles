@@ -1,3 +1,4 @@
+
 -- disable netrw for nvim-tree
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
@@ -23,8 +24,8 @@ vim.o.expandtab = true
 
 -- Numbers on the side
 vim.wo.number = true
+vim.wo.relativenumber = true 
 vim.o.ruler = true
-
 -- Show something in the command line not sure
 vim.o.showcmd = true
 
@@ -41,80 +42,99 @@ require('lualine').setup {
   },
 }
 
--- LSP setup
-require("lsp")
-
-require('lsp_signature').setup()
-
 -- Treesitter setup
 require('nvim-treesitter.configs').setup {
-  highlight = {
-    enable = true
-  },
+  highlight = { enable = true }
 }
-
--- Navigator setup
-require('navigator').setup()
 
 -- Telescope setup
 local telescope = require('telescope')
 telescope.load_extension('fzf')
-telescope.load_extension('emoji')
 vim.keymap.set('n', '<leader>tf', ':Telescope find_files<CR>')  -- file search
-vim.keymap.set('n', '<leader>tg', ':Telescope live_grep<CR>')   -- ripgrep search
 vim.keymap.set('n', '<leader>tb', ':Telescope buffers<CR>')     -- buffer peak
 vim.keymap.set('n', '<leader>th', ':Telescope help_tags<CR>')   -- help menu
 vim.keymap.set('n', '<leader>tt', ':Telescope treesitter <CR>') -- treesitter symbol menu
-vim.keymap.set('n', '<leader>tn', ':Telescope notify<CR>')      -- notificationa
 vim.keymap.set('n', '<leader>tp', ':Telescope builtin<CR>')     -- picker picker lmao
-vim.keymap.set('n', '<leader>te', ':Telescope emoji<CR>')       -- emoji picker
 
-
--- File System editor setup
 require('oil').setup()
 
--- c2h setup
-vim.keymap.set('n', '<leader>ch', ':C2H<CR>')
+-- LSP
 
--- Global notes setup
-local global_note = require('global-note')
-global_note.setup()
-vim.keymap.set('n', '<leader>n', global_note.toggle_note)
+vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
 
--- markview.nvim
-local markview = require("markview")
-markview.setup({
-  buf_ignore = { "nofile" },
-  modes = { "n" },
+local cmp = require('cmp')
+local luasnip = require('luasnip')
+luasnip.setup()
 
-  restore_conceallevel = true,
-  restore_concealcurser = false,
+local select_opts = {behavior = cmp.SelectBehavior.Select}
 
-  headings = {
-    enable = true,
-    shift_width = 2,
-    style = "simple",
+cmp.setup({
+  sources = cmp.config.sources {
+    { name = 'nvim_lsp' },
+    { name = 'buffer' },
   },
-
-  list_items = {
-    shift_amount = 1,
-    marker_plus = {
-      add_padding = true,
-      text = "•",
-      hl = "rainbow2"
-    },
-    marker_minus = {
-      add_padding = true,
-      text = "•",
-      hl = "rainbow4"
-    },
-    marker_star = {
-      add_padding = true,
-      text = "•",
-      text_hl = "rainbow2"
-    },
-    marker_dot = {
-      add_padding = true
-    },
+  snippet = {
+    expand = function(args)
+      luasnip.lsp_expand(args.body)
+    end
   },
+  formatting = {
+    fields = {'menu', 'abbr', 'kind'},
+    format = function(entry, item)
+      local menu_icon = {
+        nvim_lsp = 'λ',
+        luasnip = '⋗',
+        buffer = 'Ω',
+      }
+      item.menu = menu_icon[entry.source.name]
+      return item
+    end,
+  },
+  mapping = {
+    ['<CR>'] = cmp.mapping.confirm({select = false}),
+    ['<C-k>'] = cmp.mapping.select_prev_item(select_opts),
+    ['<Tab>'] = cmp.mapping.select_next_item(select_opts),
+  }
+})
+ 
+
+local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+require('lspconfig').clangd.setup {
+  capabilities = lsp_capabilities,
+}
+
+vim.api.nvim_create_autocmd('LspAttach', {
+  desc = 'LSP actions',
+  callback = function()
+    local bufmap = function(mode, lhs, rhs)
+      local opts = {buffer = true}
+      vim.keymap.set(mode, lhs, rhs, opts)
+    end
+
+    -- Displays hover information about the symbol under the cursor
+    bufmap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>')
+
+    -- Jump to the definition
+    bufmap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>')
+
+    -- Jump to declaration
+    bufmap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>')
+
+    -- Lists all the implementations for the symbol under the cursor
+    bufmap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>')
+
+    -- Jumps to the definition of the type symbol
+    bufmap('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>')
+
+    -- Lists all the references 
+    bufmap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>')
+
+    -- Displays a function's signature information
+    bufmap('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>')
+
+    -- Renames all references to the symbol under the cursor
+    bufmap('n', 'gr', '<cmd>lua vim.lsp.buf.rename()<cr>')
+
+  end
 })
